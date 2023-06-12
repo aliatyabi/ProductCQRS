@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ProductCQRS.Application.Products.Commands
@@ -18,5 +19,8 @@ namespace ProductCQRS.Application.Products.Commands
 		public string? ManufactureEmail { get; set; }
 
 		public bool IsAvailable { get; set; }
-	}
+
+		[JsonIgnore]
+        public string? UserId { get; set; }
+    }
 }

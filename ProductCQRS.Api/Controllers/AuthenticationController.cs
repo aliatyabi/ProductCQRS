@@ -57,34 +57,6 @@ namespace ProductCQRS.Api.Controllers
 			return Unauthorized();
 		}
 
-		//[HttpPost]
-		//[Route("register")]
-		//public async Task<IActionResult> Register([FromBody] RegisterViewModel registerViewModel)
-		//{
-		//	var userExists = await UserManager.FindByNameAsync(registerViewModel.Username);
-
-		//	if (userExists != null)
-		//	{
-		//		return StatusCode(StatusCodes.Status500InternalServerError);
-		//	}
-
-		//	User user = new()
-		//	{
-		//		UserName = registerViewModel.Username,
-		//		Email = registerViewModel.Email,
-		//		SecurityStamp = Guid.NewGuid().ToString(),
-		//	};
-
-		//	var result = await UserManager.CreateAsync(user, registerViewModel.Password);
-
-		//	if (!result.Succeeded)
-		//	{
-		//		return StatusCode(StatusCodes.Status500InternalServerError);
-		//	}
-
-		//	return Ok();
-		//}
-
 		[HttpPost]
 		[Route("register")]
 		public async Task<IActionResult> Register([FromBody] RegisterViewModel registerViewModel)

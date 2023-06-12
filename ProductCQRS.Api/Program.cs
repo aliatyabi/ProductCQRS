@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
 using ProductCQRS.Application;
 using ProductCQRS.Infrastructure;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureInfrastructure(builder.Configuration);
 builder.Services.ConfigureApplication(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 

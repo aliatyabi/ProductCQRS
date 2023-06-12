@@ -61,7 +61,7 @@ namespace ProductCQRS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email is not correct!.
+        ///   Looks up a localized string similar to ایمیل وارد شده نامعتبر است!.
         /// </summary>
         public static string EmailInvalidError {
             get {
@@ -70,7 +70,7 @@ namespace ProductCQRS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PropertyName} is required!.
+        ///   Looks up a localized string similar to فیلد {PropertyName} الزامی می باشد!.
         /// </summary>
         public static string RequiredError {
             get {

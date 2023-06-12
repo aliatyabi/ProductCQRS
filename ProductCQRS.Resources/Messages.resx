@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EmailInvalidError" xml:space="preserve">
-    <value>Email is not correct!</value>
+    <value>ایمیل وارد شده نامعتبر است!</value>
   </data>
   <data name="RequiredError" xml:space="preserve">
-    <value>{PropertyName} is required!</value>
+    <value>فیلد {PropertyName} الزامی می باشد!</value>
   </data>
 </root>
