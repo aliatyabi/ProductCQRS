@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ProductCQRS.Application.Products.Commands;
 using ProductCQRS.Application.Products.Queries;
 
 namespace ProductCQRS.Api.Controllers
@@ -21,6 +22,14 @@ namespace ProductCQRS.Api.Controllers
 			var response = await Mediator.Send(new GetAllProductsRequest());
 
 			return Ok(response);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> PostAsync(CreateProductRequest request)
+		{
+			var newProductId = await Mediator.Send(request);
+
+			return Ok(newProductId);
 		}
 	}
 }
