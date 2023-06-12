@@ -10,6 +10,8 @@ builder.Services.ConfigureInfrastructure(builder.Configuration);
 builder.Services.ConfigureApplication(builder.Configuration);
 
 builder.Services.AddControllers().AddFluentValidation();
+builder.Services.AddHttpContextAccessor();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
