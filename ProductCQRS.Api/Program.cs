@@ -1,6 +1,11 @@
+using ProductCQRS.Application;
+using ProductCQRS.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.ConfigureInfrastructure(builder.Configuration);
+builder.Services.ConfigureApplication(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
