@@ -50,6 +50,7 @@ namespace ProductCQRS.Api.Controllers
 			return Ok(newProductId);
 		}
 
+		[Authorize]
 		[HttpPut]
 		public async Task<IActionResult> PutAsync(UpdateProductRequest request)
 		{
