@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductCQRS.Application.Products.Commands;
 using ProductCQRS.Application.Products.Queries;
@@ -24,6 +25,7 @@ namespace ProductCQRS.Api.Controllers
 			return Ok(response);
 		}
 
+		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> PostAsync(CreateProductRequest request)
 		{

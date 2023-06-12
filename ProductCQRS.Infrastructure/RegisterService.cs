@@ -1,7 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using ProductCQRS.Application.DatabaseContextInterface;
+using ProductCQRS.Domain.Entities;
 using ProductCQRS.Infrastructure.DatabaseContext;
 using System;
 using System.Collections.Generic;
@@ -22,6 +26,34 @@ namespace ProductCQRS.Infrastructure
 
 			services.AddScoped<IMyDatabaseContext>(option => {
 				return option.GetService<MyDatabaseContext>();
+			});
+
+			// For Identity
+			services.AddIdentity<User, IdentityRole>()
+				.AddEntityFrameworkStores<MyDatabaseContext>()
+				.AddDefaultTokenProviders();
+
+			// Adding Authentication
+			services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+
+			// Adding Jwt Bearer
+			.AddJwtBearer(options =>
+			{
+				options.SaveToken = true;
+				options.RequireHttpsMetadata = false;
+				options.TokenValidationParameters = new TokenValidationParameters()
+				{
+					ValidateIssuer = true,
+					ValidateAudience = true,
+					ValidAudience = configuration["JWT:ValidAudience"],
+					ValidIssuer = configuration["JWT:ValidIssuer"],
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+				};
 			});
 		}
 	}
