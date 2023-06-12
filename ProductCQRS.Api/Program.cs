@@ -16,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x => {
 	x.SwaggerDoc("v1", new OpenApiInfo
 	{
-		Title = "JWTToken_Auth_API",
+		Title = "Authentication with JWT",
 		Version = "v1"
 	});
 	x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()

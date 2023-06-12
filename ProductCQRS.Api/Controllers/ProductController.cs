@@ -45,5 +45,13 @@ namespace ProductCQRS.Api.Controllers
 
 			return Ok(newProductId);
 		}
+
+		[HttpPut]
+		public async Task<IActionResult> PutAsync(UpdateProductRequest request)
+		{
+			var productId = await Mediator.Send(request);
+
+			return Ok(productId);
+		}
 	}
 }
