@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProductCQRS.Application.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +19,10 @@ namespace ProductCQRS.Application
 			services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+			services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+			services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
 		}
 	}
 }
